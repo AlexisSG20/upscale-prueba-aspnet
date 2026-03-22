@@ -31,10 +31,11 @@ body {
 }
 
 .activation-page {
-    min-height: 100vh;
+    height: 100vh;
     background: #f3f3f3;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .top-bar {
@@ -45,6 +46,7 @@ body {
     display: flex;
     align-items: center;
     padding: 0 20px 0 18px;
+    flex-shrink: 0;
 }
 
 .logo-container {
@@ -81,12 +83,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 16px 0;
+    padding: 24px 16px;
     background-color: #f3f3f3;
     background-image: url('/images/background-illustration.png');
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: contain;
+    overflow-y: auto;
 }
 
 .activation-card {
@@ -176,6 +179,9 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    flex-shrink: 0;
+    height: 72px;
+    box-sizing: border-box;
 }
 
 .footer-box {
@@ -194,4 +200,249 @@ body {
     width: 381px;
     height: 44px;
     object-fit: contain;
+}
+
+.gestion-page {
+    height: 100vh;
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.gestion-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.gestion-background {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 24px 20px;
+    overflow-y: auto;
+}
+
+.gestion-bg-art {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-image: url('/images/gestion-usuarios-bg.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% auto;
+    z-index: 0;
+}
+
+.login-panel {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 14px;
+    padding: 38px 42px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.login-panel,
+.support-box {
+    position: relative;
+    z-index: 1;
+}
+
+.document-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 26px;
+    border: 1px solid #8c96a0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.doc-tab {
+    height: 48px;
+    border: none;
+    background: #ffffff;
+    color: #7d8691;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+    .doc-tab.active {
+        background: #7f8a95;
+        color: #ffffff;
+    }
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    .form-group label {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1f1f1f;
+    }
+
+.login-form input {
+    width: 100%;
+    height: 52px;
+    border: 1px solid #c9d0d6;
+    border-radius: 8px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 15px;
+    color: #495057;
+    background-color: #ffffff;
+    outline: none;
+}
+
+    .login-form input::placeholder {
+        color: #98a1ab;
+    }
+
+.password-wrapper {
+    position: relative;
+}
+
+    .password-wrapper input {
+        padding-right: 52px;
+    }
+
+.forgot-password {
+    display: inline-block;
+    margin-top: -6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0156ac;
+    text-decoration: none;
+}
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }
+
+.login-button {
+    width: 100%;
+    height: 56px;
+    margin-top: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #8fb3d9;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.support-box {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 14px;
+    padding: 22px 26px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.support-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.support-box p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.45;
+    color: #4d4d4d;
+}
+
+.support-box a {
+    color: #0156ac;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+    .support-box a:hover {
+        text-decoration: underline;
+    }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.input-icon-wrapper {
+    position: relative;
+}
+
+    .input-icon-wrapper input {
+        padding-left: 48px;
+    }
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.password-wrapper input {
+    padding-right: 52px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.password-eye-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.support-icon-img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    display: block;
 }
