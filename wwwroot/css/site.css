@@ -88,7 +88,7 @@ body {
     background-image: url('/images/background-illustration.png');
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-size: contain;
+    background-size: cover;
     overflow-y: auto;
 }
 
@@ -239,8 +239,8 @@ body {
     height: 100%;
     background-image: url('/images/gestion-usuarios-bg.png');
     background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: 100% auto;
+    background-position: center top;
+    background-size: cover;
     z-index: 0;
 }
 
