@@ -17,12 +17,12 @@
                     <button type="button" class="doc-tab">CE</button>
                 </div>
 
-                <form asp-action="GestionUsuarios" asp-controller="Home" method="post" class="login-form">
+                <form asp-action="GestionUsuarios" asp-controller="Home" method="post" class="login-form" id="loginForm">
                     <div class="form-group">
                         <label asp-for="NumeroDocumento">Usuario</label>
                         <div class="input-icon-wrapper">
                             <img src="~/images/icon-user.svg" alt="Usuario" class="input-icon" />
-                            <input asp-for="NumeroDocumento" placeholder="Ingresar usuario" />
+                            <input asp-for="NumeroDocumento" id="numeroDocumento" placeholder="Ingresar usuario" />
                         </div>
                         <span asp-validation-for="NumeroDocumento" class="text-danger"></span>
                     </div>
@@ -31,8 +31,8 @@
                         <label asp-for="Contrasena">Contraseña</label>
                         <div class="input-icon-wrapper password-wrapper">
                             <img src="~/images/icon-lock.svg" alt="Contraseña" class="input-icon" />
-                            <input asp-for="Contrasena" type="password" placeholder="Ingresar contraseña" />
-                            <button type="button" class="password-toggle" aria-label="Mostrar contraseña">
+                            <input asp-for="Contrasena" id="contrasena" type="password" placeholder="Ingresar contraseña" />
+                            <button type="button" class="password-toggle" id="togglePassword" aria-label="Mostrar contraseña">
                                 <img src="~/images/icon-eye.svg" alt="Ver contraseña" class="password-eye-icon" />
                             </button>
                         </div>
@@ -48,7 +48,7 @@
 
                     <a href="#" class="forgot-password">¿Olvidó su contraseña?</a>
 
-                    <button type="submit" class="login-button">Ingresar</button>
+                    <button type="submit" class="login-button" id="loginButton">Ingresar</button>
                 </form>
             </section>
 
@@ -66,3 +66,33 @@
 
     <partial name="_Footer" />
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const numeroDocumento = document.getElementById("numeroDocumento");
+        const contrasena = document.getElementById("contrasena");
+        const loginButton = document.getElementById("loginButton");
+        const togglePassword = document.getElementById("togglePassword");
+
+        function actualizarEstadoBoton() {
+            const usuarioLleno = numeroDocumento.value.trim() !== "";
+            const contrasenaLlena = contrasena.value.trim() !== "";
+
+            if (usuarioLleno && contrasenaLlena) {
+                loginButton.classList.add("active");
+            } else {
+                loginButton.classList.remove("active");
+            }
+        }
+
+        numeroDocumento.addEventListener("input", actualizarEstadoBoton);
+        contrasena.addEventListener("input", actualizarEstadoBoton);
+
+        togglePassword.addEventListener("click", function () {
+            const esPassword = contrasena.getAttribute("type") === "password";
+            contrasena.setAttribute("type", esPassword ? "text" : "password");
+        });
+
+        actualizarEstadoBoton();
+    });
+</script>
