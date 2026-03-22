@@ -10,7 +10,10 @@
         public string CorreoPrincipal { get; set; } = string.Empty;
         public string? CorreoSecundario { get; set; }
         public string TelefonoMovil { get; set; } = string.Empty;
+
+        public string? TipoTelefonoSecundario { get; set; }
         public string? TelefonoSecundario { get; set; }
+
         public DateTime? FechaNacimiento { get; set; }
         public string Nacionalidad { get; set; } = string.Empty;
         public string Sexo { get; set; } = string.Empty;

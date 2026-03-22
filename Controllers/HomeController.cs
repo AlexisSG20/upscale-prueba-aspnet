@@ -92,23 +92,26 @@ namespace SistemaAccesoWeb.Controllers
 
             var model = new PerfilUsuarioViewModel
             {
-                TipoDocumento = usuario.TipoDocumento,
-                NumeroDocumento = usuario.NumeroDocumento,
-                Nombres = usuario.Nombres,
-                ApellidoPaterno = usuario.ApellidoPaterno,
-                ApellidoMaterno = usuario.ApellidoMaterno,
-                CorreoPrincipal = usuario.CorreoPrincipal,
+                TipoDocumento = usuario.TipoDocumento ?? string.Empty,
+                NumeroDocumento = usuario.NumeroDocumento ?? string.Empty,
+                Nombres = usuario.Nombres ?? string.Empty,
+                ApellidoPaterno = usuario.ApellidoPaterno ?? string.Empty,
+                ApellidoMaterno = usuario.ApellidoMaterno ?? string.Empty,
+                CorreoPrincipal = usuario.CorreoPrincipal ?? string.Empty,
                 CorreoSecundario = usuario.CorreoSecundario,
-                TelefonoMovil = usuario.TelefonoMovil,
+                TelefonoMovil = usuario.TelefonoMovil ?? string.Empty,
+
+                TipoTelefonoSecundario = string.IsNullOrWhiteSpace(usuario.TelefonoSecundario) ? "Tipo" : "Casa",
                 TelefonoSecundario = usuario.TelefonoSecundario,
+
                 FechaNacimiento = usuario.FechaNacimiento,
-                Nacionalidad = usuario.Nacionalidad,
-                Sexo = usuario.Sexo,
-                TipoContratacion = usuario.TipoContratacion,
+                Nacionalidad = usuario.Nacionalidad ?? string.Empty,
+                Sexo = usuario.Sexo ?? string.Empty,
+                TipoContratacion = usuario.TipoContratacion ?? string.Empty,
                 FechaContratacion = usuario.FechaContratacion,
-                Entidad = usuario.Entidad,
-                Rol = usuario.Rol,
-                Estado = usuario.Estado
+                Entidad = usuario.Entidad ?? string.Empty,
+                Rol = usuario.Rol ?? string.Empty,
+                Estado = usuario.Estado ?? string.Empty
             };
 
             return View(model);
