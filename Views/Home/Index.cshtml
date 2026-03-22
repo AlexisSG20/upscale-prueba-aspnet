@@ -8,7 +8,25 @@
     <main class="activation-wrapper">
         <div class="activation-card">
             <div class="icon-circle">
-                <img src="~/images/rocket-icon.svg" alt="Activación exitosa" class="rocket-icon-img" />
+                <svg viewBox="0 0 100 100" class="rocket-icon-img" xmlns="http://www.w3.org/2000/svg" style="width: 120px; height: 120px;" aria-label="Activación exitosa">
+                    <!-- Blob de fondo suave alineado al estilo de soporte/login -->
+                    <path d="M50 15 C75 10 90 30 85 55 C80 85 60 90 40 85 C15 80 10 55 15 35 C20 15 35 18 50 15 Z" fill="#eff4fd" />
+
+                    <!-- Estrellas decorativas -->
+                    <path d="M25 25 L29 25 M27 23 L27 27" stroke="#0056b3" stroke-width="2" stroke-linecap="round" />
+                    <path d="M80 30 L84 30 M82 28 L82 32" stroke="#0056b3" stroke-width="2" stroke-linecap="round" />
+
+                    <!-- Figura del usuario (líneas simples) -->
+                    <circle cx="50" cy="40" r="14" fill="white" stroke="#0056b3" stroke-width="3" />
+                    <path d="M30 75 C30 58 40 55 50 55 C53.5 55 56.5 55.4 59.2 56.5" fill="none" stroke="#0056b3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M30 75 L70 75" fill="none" stroke="white" stroke-width="3" /> <!-- cierra por abajo visualmente para fill si se desea, pero en line-art abierto queda bien -->
+                    <path d="M30 75 C30 58 40 55 50 55 C60 55 70 58 70 75 Z" fill="white" stroke="#0056b3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+                    <!-- Badge de confirmación (Check) superpuesto -->
+                    <circle cx="68" cy="68" r="14" fill="#eff4fd" />
+                    <circle cx="68" cy="68" r="12" fill="white" stroke="#0056b3" stroke-width="3" />
+                    <path d="M63 68 L66 71 L73 63" fill="none" stroke="#0056b3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
             </div>
 
             <h2 class="activation-title">¡Bienvenida, July!</h2>
