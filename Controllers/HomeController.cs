@@ -11,6 +11,11 @@ namespace SistemaAccesoWeb.Controllers
             return View();
         }
 
+        public IActionResult GestionUsuarios()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
