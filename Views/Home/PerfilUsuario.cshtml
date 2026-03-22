@@ -172,5 +172,73 @@
         <footer class="perfil-footer">
             <img src="~/images/footer-logos.png" alt="Logos del Estado" />
         </footer>
+
+        <div id="sessionTimeoutOverlay" class="session-timeout-overlay" style="display: none;">
+            <div class="session-timeout-modal">
+                <div class="session-timeout-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B7791F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+
+                <div class="session-timeout-content">
+                    <h3>Su sesión esta a punto de expirar</h3>
+                    <p>
+                        Por seguridad, su sesión expirará en
+                        <span id="sessionCountdown">60</span> segundos.
+                        Para continuar, seleccione "Extender sesión"
+                    </p>
+                </div>
+
+                <div class="session-timeout-actions">
+                    <button type="button" id="extendSessionButton" class="session-timeout-button">
+                        Extender sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const overlay = document.getElementById("sessionTimeoutOverlay");
+                        const countdown = document.getElementById("sessionCountdown");
+                        const extendButton = document.getElementById("extendSessionButton");
+
+                        if (!overlay || !countdown || !extendButton) {
+                            return;
+                        }
+
+                        const tiempoTotalSegundos = 60; // 1 minuto de prueba
+                        const tiempoAvisoSegundos = 30; // mostrar aviso cuando falten 30 segundos
+
+                        let segundosRestantes = tiempoTotalSegundos;
+                        let modalMostrado = false;
+
+                        const intervalo = setInterval(function () {
+                            segundosRestantes--;
+
+                            if (segundosRestantes <= tiempoAvisoSegundos && !modalMostrado) {
+                                overlay.style.display = "flex";
+                                modalMostrado = true;
+                            }
+
+                            if (modalMostrado) {
+                                countdown.textContent = Math.max(segundosRestantes, 0);
+                            }
+
+                            if (segundosRestantes <= 0) {
+                                clearInterval(intervalo);
+                                window.location.href = '/Home/GestionUsuarios?sesionExpirada=1';
+                            }
+                        }, 1000);
+
+                        extendButton.addEventListener("click", function () {
+                            window.location.reload();
+                        });
+                    });
+        </script>
+
     </div>
 </div>
