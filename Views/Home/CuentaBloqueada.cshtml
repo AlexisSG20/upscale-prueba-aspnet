@@ -2,13 +2,24 @@
     ViewData["Title"] = "Cuenta bloqueada";
 }
 
-<div>
+<div class="gestion-page">
     <partial name="_Header" />
 
-    <main style="padding: 40px; text-align: center;">
-        <h1>Cuenta bloqueada temporalmente</h1>
-        <p>Ha superado el número máximo de intentos permitidos.</p>
-        <p>Intente nuevamente más tarde.</p>
+    <main class="gestion-main cuenta-bloqueada-main">
+        <div class="gestion-background">
+            <div class="gestion-bg-art"></div>
+
+            <div class="blocked-card">
+                <img src="~/images/icon-support.svg" alt="Cuenta bloqueada" class="blocked-icon" />
+
+                <h2 class="blocked-title">Cuenta bloqueada<br />temporalmente</h2>
+
+                <p class="blocked-text">
+                    Has excedido el número máximo de intentos fallidos (5). Por seguridad, tu cuenta ha sido
+                    bloqueada durante 15 minutos. Intenta nuevamente más tarde.
+                </p>
+            </div>
+        </div>
     </main>
 
     <partial name="_Footer" />
