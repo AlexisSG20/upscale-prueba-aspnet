@@ -39,6 +39,16 @@
                         <span asp-validation-for="Contrasena" class="text-danger"></span>
                     </div>
 
+                    @if (TempData["MensajeSesionExpirada"] != null)
+                    {
+                        <div class="session-expired-toast">
+                            <div class="session-expired-toast-icon">i</div>
+                            <div class="session-expired-toast-text">
+                                @TempData["MensajeSesionExpirada"]
+                            </div>
+                        </div>
+                    }
+
                     @if (!string.IsNullOrEmpty(Model?.MensajeError))
                     {
                         <div class="text-danger login-error-message">
@@ -94,5 +104,24 @@
         });
 
         actualizarEstadoBoton();
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toast = document.querySelector(".session-expired-toast");
+
+        if (!toast) {
+            return;
+        }
+
+        setTimeout(function () {
+            toast.style.opacity = "0";
+            toast.style.transform = "translateY(10px)";
+
+            setTimeout(function () {
+                toast.remove();
+            }, 300);
+        }, 5000);
     });
 </script>

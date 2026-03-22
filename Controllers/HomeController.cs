@@ -18,8 +18,13 @@ namespace SistemaAccesoWeb.Controllers
         {
             return View();
         }
-        public IActionResult GestionUsuarios()
+        public IActionResult GestionUsuarios(string? sesionExpirada)
         {
+            if (sesionExpirada == "1")
+            {
+                TempData["MensajeSesionExpirada"] = "Su sesión ha expirado debido a inactividad. Por favor, inicie sesión nuevamente.";
+            }
+
             return View(new LoginViewModel());
         }
 
@@ -62,6 +67,9 @@ namespace SistemaAccesoWeb.Controllers
 
             _usuarioRepository.ReiniciarIntentosFallidos(usuario.Id);
 
+            HttpContext.Session.SetString("UsuarioActivo", usuario.NumeroDocumento);
+            HttpContext.Session.SetString("UltimaActividad", DateTime.UtcNow.ToString("O"));
+
             return RedirectToAction("PerfilUsuario", new { numeroDocumento = usuario.NumeroDocumento });
         }
 
@@ -83,6 +91,14 @@ namespace SistemaAccesoWeb.Controllers
 
         public IActionResult PerfilUsuario(string numeroDocumento)
         {
+            var usuarioActivo = HttpContext.Session.GetString("UsuarioActivo");
+
+            if (string.IsNullOrEmpty(usuarioActivo))
+            {
+                TempData["MensajeSesionExpirada"] = "Su sesión ha expirado debido a inactividad. Por favor, inicie sesión nuevamente.";
+                return RedirectToAction("GestionUsuarios");
+            }
+
             var usuario = _usuarioRepository.ObtenerPorNumeroDocumento(numeroDocumento);
 
             if (usuario == null)
