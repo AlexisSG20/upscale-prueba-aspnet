@@ -1,0 +1,153 @@
+﻿@model SistemaAccesoWeb.Models.PerfilUsuarioViewModel
+
+@{
+    ViewData["Title"] = "Perfil de usuario";
+}
+
+<div class="perfil-page">
+    <aside class="perfil-sidebar">
+        <div class="perfil-sidebar-top">
+            <button class="perfil-menu-btn" type="button">☰</button>
+        </div>
+
+        <nav class="perfil-sidebar-nav">
+            <a href="#" class="perfil-sidebar-icon">⌂</a>
+            <a href="#" class="perfil-sidebar-icon active">👤</a>
+            <a href="#" class="perfil-sidebar-icon">🔍</a>
+        </nav>
+    </aside>
+
+    <div class="perfil-content-wrapper">
+        <header class="perfil-header">
+            <div class="perfil-header-left"></div>
+
+            <div class="perfil-header-right">
+                <span class="perfil-header-help">?</span>
+                <span class="perfil-header-bell">🔔</span>
+
+                <div class="perfil-header-user">
+                    <div class="perfil-header-avatar">👤</div>
+                    <div class="perfil-header-userinfo">
+                        <div class="perfil-header-name">@Model.ApellidoPaterno @Model.ApellidoMaterno, @Model.Nombres</div>
+                        <div class="perfil-header-role">@Model.Rol</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="perfil-main">
+            <div class="perfil-breadcrumb">Gestión de usuarios</div>
+            <h1 class="perfil-title">Perfil de usuario</h1>
+
+            <section class="perfil-card">
+                <div class="perfil-summary">
+                    <div class="perfil-avatar-circle" style="display: flex; align-items: center; justify-content: center;">
+                        <img src="~/images/icon-user.svg" style="width: 32px; height: 32px; filter: brightness(0) invert(1);" alt="Avatar" />
+                    </div>
+
+                    <div class="perfil-summary-info">
+                        <div class="perfil-summary-top">
+                            <h2>@Model.ApellidoPaterno @Model.ApellidoMaterno, @Model.Nombres</h2>
+                            <span class="perfil-estado">@Model.Estado</span>
+                        </div>
+
+                        <p class="perfil-rol">@Model.Rol</p>
+                        <p class="perfil-entidad">@Model.Entidad</p>
+                    </div>
+                </div>
+
+                <div class="perfil-tabs">
+                    <button type="button" class="perfil-tab active">Información básica</button>
+                    <button type="button" class="perfil-tab">Responsabilidades</button>
+                    <button type="button" class="perfil-tab">Historial de responsabilidades</button>
+                </div>
+
+                <div class="perfil-grid">
+                    <div class="perfil-field">
+                        <label>Nombres</label>
+                        <div class="perfil-value">@Model.Nombres</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Primer Apellido</label>
+                        <div class="perfil-value">@Model.ApellidoPaterno</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Segundo Apellido</label>
+                        <div class="perfil-value">@Model.ApellidoMaterno</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Tipo de Documento de Identidad</label>
+                        <div class="perfil-value">@Model.TipoDocumento</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>N° de Documento de Identidad</label>
+                        <div class="perfil-value">@Model.NumeroDocumento</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Fecha de nacimiento</label>
+                        <div class="perfil-value">@(Model.FechaNacimiento?.ToString("dd / MM / yyyy") ?? "-")</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Nacionalidad</label>
+                        <div class="perfil-value">@Model.Nacionalidad</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Sexo</label>
+                        <div class="perfil-value">@Model.Sexo</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Correo electrónico principal</label>
+                        <div class="perfil-value" style="justify-content: space-between;">
+                            <span>@Model.CorreoPrincipal</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Correo electrónico secundario <span class="text-muted" style="font-weight: 400; font-size: 0.9em;">(Opcional)</span></label>
+                        <div class="perfil-value">@(string.IsNullOrWhiteSpace(Model.CorreoSecundario) ? "-" : Model.CorreoSecundario)</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Teléfono Móvil</label>
+                        <div class="perfil-value" style="justify-content: space-between;">
+                            <span>@Model.TelefonoMovil</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Teléfono secundario <span class="text-muted" style="font-weight: 400; font-size: 0.9em;">(Opcional)</span></label>
+                        <div class="perfil-value">@(string.IsNullOrWhiteSpace(Model.TelefonoSecundario) ? "-" : Model.TelefonoSecundario)</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Tipo de Contratación</label>
+                        <div class="perfil-value">@Model.TipoContratacion</div>
+                    </div>
+
+                    <div class="perfil-field">
+                        <label>Fecha de contratación</label>
+                        <div class="perfil-value">@(Model.FechaContratacion?.ToString("dd / MM / yyyy") ?? "-")</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="perfil-footer">
+            <img src="~/images/footer-logos.png" alt="Logos del Estado" />
+        </footer>
+    </div>
+</div>

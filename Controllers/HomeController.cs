@@ -62,7 +62,7 @@ namespace SistemaAccesoWeb.Controllers
 
             _usuarioRepository.ReiniciarIntentosFallidos(usuario.Id);
 
-            return Content($"Login correcto. Bienvenido/a {usuario.Nombres} {usuario.ApellidoPaterno}");
+            return RedirectToAction("PerfilUsuario", new { numeroDocumento = usuario.NumeroDocumento });
         }
 
         public IActionResult ProbarConexion()
@@ -79,6 +79,39 @@ namespace SistemaAccesoWeb.Controllers
         public IActionResult CuentaBloqueada()
         {
             return View();
+        }
+
+        public IActionResult PerfilUsuario(string numeroDocumento)
+        {
+            var usuario = _usuarioRepository.ObtenerPorNumeroDocumento(numeroDocumento);
+
+            if (usuario == null)
+            {
+                return RedirectToAction("GestionUsuarios");
+            }
+
+            var model = new PerfilUsuarioViewModel
+            {
+                TipoDocumento = usuario.TipoDocumento,
+                NumeroDocumento = usuario.NumeroDocumento,
+                Nombres = usuario.Nombres,
+                ApellidoPaterno = usuario.ApellidoPaterno,
+                ApellidoMaterno = usuario.ApellidoMaterno,
+                CorreoPrincipal = usuario.CorreoPrincipal,
+                CorreoSecundario = usuario.CorreoSecundario,
+                TelefonoMovil = usuario.TelefonoMovil,
+                TelefonoSecundario = usuario.TelefonoSecundario,
+                FechaNacimiento = usuario.FechaNacimiento,
+                Nacionalidad = usuario.Nacionalidad,
+                Sexo = usuario.Sexo,
+                TipoContratacion = usuario.TipoContratacion,
+                FechaContratacion = usuario.FechaContratacion,
+                Entidad = usuario.Entidad,
+                Rol = usuario.Rol,
+                Estado = usuario.Estado
+            };
+
+            return View(model);
         }
         public IActionResult Privacy()
         {
