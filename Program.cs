@@ -11,7 +11,7 @@ builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(2); // prueba corta
+    options.IdleTimeout = TimeSpan.FromMinutes(20);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
