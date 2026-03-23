@@ -31,7 +31,7 @@ Ejemplo:
 "ConnectionStrings": {
   "DefaultConnection": "Server=TU_SERVIDOR;Database=SistemaAccesoWebDB;Trusted_Connection=True;TrustServerCertificate=True;"
 }
-
+```
 3. Ejecutar el proyecto desde Visual Studio.
 
 ## Usuario de prueba
